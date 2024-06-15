@@ -1,5 +1,5 @@
 # dotfiles
-dotfiles managament with [chezmoi](https://www.chezmoi.io)
+My dotfiles managament with [chezmoi](https://www.chezmoi.io)
 
 ```
 
