@@ -1,6 +1,8 @@
 # dotfiles
 My dotfiles managament with [chezmoi](https://www.chezmoi.io)
 
+Run: sh -c "$(wget -qO- https://raw.githubusercontent.com/phenates/dotfiles/master/install.sh)"
+
 ```
 
 
