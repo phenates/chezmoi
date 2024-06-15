@@ -1,30 +1,11 @@
-## Installation
+# dotfiles
+dotfiles managament with [chezmoi](https://www.chezmoi.io)
 
-### Alpine
-```
-# apk add chezmoi
-$ chezmoi init --apply juliekoubova --source ~/dotfiles
-# julie-setup
 ```
 
-### FreeBSD
-```
-# pkg install chezmoi
-$ chezmoi init --apply juliekoubova --source ~/dotfiles
-```
-### MacOS
-```
-% /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-% brew install chezmoi
-% chezmoi init --apply juliekoubova --source ~/dotfiles
-```
-### Windows
-```
-C:\src\> winget install --id twpayne.chezmoi
-C:\src\> chezmoi init --apply juliekoubova --source C:\src\dotfiles
-```
 
-## Write Access
+## Tips
+### Write Access
 1. Generate an SSH key if there isn't one yet.
 
     ```
