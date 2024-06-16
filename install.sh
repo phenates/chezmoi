@@ -4,10 +4,14 @@
 # Run: sh -c "$(wget -qO- https://raw.githubusercontent.com/phenates/dotfiles/master/install.sh)"
 
 set -e
-echo ""
-echo "------ dotfiles management ------"
 
-if [ ! "$(chezmoi -v)" ]; then
+nocolor=$(tput sgr0)
+cyan=$(tput setaf 6)
+
+echo ""
+echo $cyan"------ dotfiles management ------"$nocolor
+
+if [ ! "$(chezmoi --version)" ]; then
   echo "chezmoi installation"
   if [ "$(wget --version)" ]; then
     sh -c "$(wget -qO- get.chezmoi.io/lb)"

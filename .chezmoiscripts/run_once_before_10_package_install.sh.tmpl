@@ -1,0 +1,32 @@
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian" "ubuntu")) }}
+#!/bin/bash
+
+set -e
+
+nocolor=$(tput sgr0)
+cyan=$(tput setaf 6)
+red=$(tput setaf 1)
+
+echo -e $cyan">>>>> Begin Setting Up Ubuntu Packages <<<<<"$nocolor
+
+packages=(
+  curl
+  git
+  unzip
+  exa
+  tree
+)
+
+for package in ${packages[@]}; do
+  if ! $(dpkg-query --show $package); then
+    echo "installing $package"
+{{ if ne .chezmoi.username "root" -}}
+    sudo apt install -y $package
+{{ else -}}
+    apt install -y ${packages[@]}
+{{ end -}}
+  fi
+done
+
+
+{{ end -}}
