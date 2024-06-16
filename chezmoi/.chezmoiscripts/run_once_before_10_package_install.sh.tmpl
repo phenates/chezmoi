@@ -23,6 +23,7 @@ packages=(
 
 for package in ${packages[@]}; do
   status=$(dpkg-query --show -f='${Status}' $package)
+  echo -e $CYAN">>> $package status: $status"$NOCOLOR
   if [[ $status != "install ok installed" ]]; then
     echo -e $CYAN">>> Installing $package"$NOCOLOR
 {{ if ne .chezmoi.username "root" -}}
