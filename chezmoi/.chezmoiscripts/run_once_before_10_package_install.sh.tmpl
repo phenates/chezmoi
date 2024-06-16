@@ -23,7 +23,7 @@ packages=(
 
 for package in ${packages[@]}; do
   
-  if [[ $(dpkg-query --show -f='${Status}' $package &> /dev/null) != "install ok installed"]]; then
+  if [[ "$(dpkg-query --show -f='${Status}' $package > /dev/null 2>&1)" ]]; then
     echo -e $CYAN">>> Installing $package"$NOCOLOR
 {{ if ne .chezmoi.username "root" -}}
     sudo apt install -y $package
