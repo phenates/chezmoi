@@ -21,7 +21,7 @@ packages=(
 )
 
 for package in ${packages[@]}; do
-  if ! $(dpkg-query --show $package); then
+  if ! $(dpkg-query --show $package &> /dev/null); then
     echo $CYAN">>> Installing $package"$NOCOLOR
 {{ if ne .chezmoi.username "root" -}}
     sudo apt install -y $package
