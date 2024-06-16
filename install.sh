@@ -5,22 +5,22 @@
 
 set -e
 
-nocolor=$(tput sgr0)
-cyan=$(tput setaf 6)
+NOCOLOR=$(tput sgr0)
+CYAN=$(tput setaf 6)
 
 echo ""
-echo $cyan"------ dotfiles management ------"$nocolor
+echo $CYAN">>>>> dotfiles management <<<<<"$NOCOLOR
 
 if [ ! "$(chezmoi --version)" ]; then
-  echo "chezmoi installation"
+  echo $CYAN">>> chezmoi installation"$NOCOLOR
   if [ "$(wget --version)" ]; then
     sh -c "$(wget -qO- get.chezmoi.io/lb)"
   elif [ "$(curl -v)" ]; then
     sh -c "$(curl -fsLS get.chezmoi.io/lb)"
   else
-    echo "To install chezmoi, you must have curl or wget installed." >&2
+    echo $CYAN">>> To install chezmoi, you must have curl or wget installed."$NOCOLOR
     exit 1
   fi
 else
-  echo "chezmoi seems to be already installed"
+  echo $CYAN">>> chezmoi seems to be already installed"$NOCOLOR
 fi

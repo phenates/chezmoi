@@ -3,11 +3,13 @@
 
 set -e
 
-nocolor=$(tput sgr0)
-cyan=$(tput setaf 6)
-red=$(tput setaf 1)
+NOCOLOR=$(tput sgr0)
+CYAN=$(tput setaf 6)
+GREEN=$(tput 2)
+RED=$(tput setaf 1)
 
-echo -e $cyan">>>>> Begin Setting Up Ubuntu Packages <<<<<"$nocolor
+echo -e ""
+echo -e $CYAN">>>>> Begin Packages Installation <<<<<"$NOCOLOR
 
 packages=(
   curl
@@ -19,14 +21,16 @@ packages=(
 
 for package in ${packages[@]}; do
   if ! $(dpkg-query --show $package); then
-    echo "installing $package"
+    echo $CYAN">>> Installing $package"$NOCOLOR
 {{ if ne .chezmoi.username "root" -}}
     sudo apt install -y $package
 {{ else -}}
     apt install -y ${packages[@]}
 {{ end -}}
+  else
+    echo $CYAN">>> $package already installed"$NOCOLOR
   fi
 done
 
-
+echo -e $CYAN">>>>> Finish Packages Installation <<<<<"$NOCOLOR
 {{ end -}}
