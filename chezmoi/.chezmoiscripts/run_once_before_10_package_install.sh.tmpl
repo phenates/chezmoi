@@ -16,13 +16,15 @@ packages=(
   git
   unzip
   zsh
+  fonts-powerline
   exa
   tree
 )
 
 for package in ${packages[@]}; do
+  
   if ! $(dpkg-query --show $package &> /dev/null); then
-    echo $CYAN">>> Installing $package"$NOCOLOR
+    echo -e $CYAN">>> Installing $package"$NOCOLOR
 {{ if ne .chezmoi.username "root" -}}
     sudo apt install -y $package
 {{ else -}}
@@ -31,7 +33,17 @@ for package in ${packages[@]}; do
   else
     echo $CYAN">>> $package already installed"$NOCOLOR
   fi
+  echo -e ""
 done
 
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+  echo -e $CYAN"Install oh-my-zsh"$NOCOLOR
+  sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+else
+  echo_step_info "ohmyzsh already installed"
+fi
+
+echo -e ""
 echo -e $CYAN">>>>> Finish Packages Installation <<<<<"$NOCOLOR
+echo -e ""
 {{ end -}}
