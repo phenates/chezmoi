@@ -41,7 +41,7 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   echo -e $CYAN"Install oh-my-zsh"$NOCOLOR
   sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 else
-  echo_step_info "ohmyzsh already installed"
+  echo -e $CYAN"ohmyzsh already installed"$NOCOLOR
 fi
 
 echo -e ""
