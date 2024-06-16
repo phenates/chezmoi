@@ -14,9 +14,9 @@ echo $CYAN">>>>> dotfiles management <<<<<"$NOCOLOR
 if [ ! "$(chezmoi --version)" ]; then
   echo $CYAN">>> chezmoi installation"$NOCOLOR
   if [ "$(wget --version)" ]; then
-    sh -c "$(wget -qO- get.chezmoi.io/lb)"
+    sh -c "$(wget -qO- get.chezmoi.io/)"
   elif [ "$(curl -v)" ]; then
-    sh -c "$(curl -fsLS get.chezmoi.io/lb)"
+    sh -c "$(curl -fsLS get.chezmoi.io/)"
   else
     echo $CYAN">>> To install chezmoi, you must have curl or wget installed."$NOCOLOR
     exit 1
