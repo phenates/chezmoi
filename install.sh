@@ -11,7 +11,7 @@ CYAN=$(tput setaf 6)
 echo ""
 echo $CYAN">>>>> dotfiles management <<<<<"$NOCOLOR
 
-if [ ! "$(command -v chezmoi)" ]; then
+if [ ! "$(chezmoi --version)" ]; then
   echo $CYAN">>> chezmoi installation"$NOCOLOR
   if [ "$(wget --version)" ]; then
     sh -c "$(wget -qO- get.chezmoi.io/lb)"
