@@ -15,9 +15,7 @@ echo $CYAN">>>>> dotfiles management <<<<<"$NOCOLOR
 
 if [ ! "$(command -v chezmoi)" ]; then
   echo $CYAN"--> chezmoi installation"$NOCOLOR
-  bin_dir="$HOME/.local/bin"
-
-  echo $GREEN"Install option: [1]: install (default); [2]: install and init; [3]: install, init and apply"$NOCOLOR
+  echo $GREEN"--> Install option: [1]: install (default); [2]: install and init; [3]: install, init and apply"$NOCOLOR
   read -r RES
   case "$RES" in
   2)
