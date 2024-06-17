@@ -15,8 +15,9 @@ if [ ! "$(command -v chezmoi)" ]; then
   echo $CYAN"--> chezmoi installation"$NOCOLOR
   bin_dir="$HOME/.local/bin"
 
-  read -r $GREEN"install option: [1]: install (default); [2]: install and init; [3]: install, init and apply"$NOCOLOR
-  case "$REPLY" in
+  echo $GREEN"install option: [1]: install (default); [2]: install and init; [3]: install, init and apply"$NOCOLOR
+  read -r RES
+  case "$RES" in
   2)
     OPTION="-- init phenates"
     ;;
