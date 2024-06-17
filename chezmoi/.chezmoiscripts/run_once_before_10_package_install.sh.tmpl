@@ -25,23 +25,23 @@ for package in ${packages[@]}; do
   # status=$(dpkg-query --show -f='${Status}' $package  &> /dev/null)
   # echo -e $CYAN">>> $package status: $status"$NOCOLOR
   if [ ! $(command -v $package) ]; then
-    echo -e $CYAN">>> Installing $package"$NOCOLOR
+    echo -e $CYAN"--> Installing $package"$NOCOLOR
 {{ if ne .chezmoi.username "root" -}}
     sudo apt install -y $package
 {{ else -}}
     apt install -y ${packages[@]}
 {{ end -}}
   else
-    echo $CYAN">>> $package already installed"$NOCOLOR
+    echo $CYAN"--> $package already installed"$NOCOLOR
   fi
   echo -e ""
 done
 
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-  echo -e $CYAN"Install oh-my-zsh"$NOCOLOR
+  echo -e $CYAN"--> Install oh-my-zsh"$NOCOLOR
   sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 else
-  echo -e $CYAN"ohmyzsh already installed"$NOCOLOR
+  echo -e $CYAN"--> ohmyzsh already installed"$NOCOLOR
 fi
 
 echo -e ""

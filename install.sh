@@ -14,10 +14,13 @@ echo ""
 echo $CYAN">>>>> dotfiles management <<<<<"$NOCOLOR
 
 if [ ! "$(command -v chezmoi)" ]; then
-  echo $CYAN"--> chezmoi installation"$NOCOLOR
-  echo $GREEN"--> Install option: [1]: install (default); [2]: install and init; [3]: install, init and apply"$NOCOLOR
+  echo $CYAN"--> chezmoi installation, options:"$NOCOLOR
+  echo $GREEN"    Install (default) [1]; Install and Init [2]; Install, Init and Apply [3]; Abord [0]"$NOCOLOR
   read -r RES
   case "$RES" in
+  0)
+    exit 0
+    ;;
   2)
     OPTION="-- init phenates"
     ;;
