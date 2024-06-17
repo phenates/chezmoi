@@ -1,29 +1,37 @@
 {{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian" "ubuntu")) -}}
 #!/bin/bash
 
-set -e
+set -e # -e: exit on error
 
+# Variables
 NOCOLOR=$(tput sgr0)
 CYAN=$(tput setaf 6)
 GREEN=$(tput setaf 2)
 RED=$(tput setaf 1)
 
-echo -e ""
-echo -e $CYAN">>>>> Begin Packages Installation <<<<<"$NOCOLOR
-
-packages=(
+packages_base=(
   curl
   git
   unzip
-  zsh
   fonts-powerline
   exa
   tree
 )
 
-for package in ${packages[@]}; do
-  # status=$(dpkg-query --show -f='${Status}' $package  &> /dev/null)
-  # echo -e $CYAN">>> $package status: $status"$NOCOLOR
+packages_zsh=(
+  zsh
+  fonts-powerline
+  zsh-syntax-highlighting
+)
+
+# Header
+echo -e ""
+echo -e $CYAN"###### Preparation before chezmoi apply #####"$NOCOLOR
+echo -e ""
+
+# Packages installation
+echo -e $CYAN">>>>> PACKAGES INSTALLATION"$NOCOLOR
+for package in ${packages_base[@]}; do
   if [ ! $(command -v $package) ]; then
     echo -e $CYAN"--> Installing $package"$NOCOLOR
 {{ if ne .chezmoi.username "root" -}}
@@ -38,6 +46,22 @@ for package in ${packages[@]}; do
 done
 
 # TODO: créer une section dédiée au shell zsh
+# Zsh shell & customization
+echo -e $CYAN">>>>> ZSH shell & customization"$NOCOLOR
+for package in ${packages_zsh[@]}; do
+  if [ ! $(command -v $package) ]; then
+    echo -e $CYAN"--> Installing $package"$NOCOLOR
+{{ if ne .chezmoi.username "root" -}}
+    sudo apt install -y $package
+{{ else -}}
+    apt install -y ${packages[@]}
+{{ end -}}
+  else
+    echo $CYAN"--> $package already installed"$NOCOLOR
+  fi
+  echo -e ""
+done
+
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   echo -e $CYAN"--> Install oh-my-zsh"$NOCOLOR
   sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -45,7 +69,10 @@ else
   echo -e $CYAN"--> ohmyzsh already installed"$NOCOLOR
 fi
 
+echo -e $CYAN"--> Change default shell to zsh"$NOCOLOR
+chsh -s $(which zsh)
+
 echo -e ""
-echo -e $CYAN">>>>> Finish Packages Installation <<<<<"$NOCOLOR
+echo -e $CYAN"###### Preparation before chezmoi apply finished #####"$NOCOLOR
 echo -e ""
 {{ end -}}

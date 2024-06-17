@@ -103,3 +103,5 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll="exa -lgah --icons"
 alias tata="echo 'tata'"
+
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
