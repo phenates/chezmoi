@@ -222,7 +222,7 @@ set stateflags
 # set functioncolor green
 
 ## In root's .nanorc you might want to use:
- set titlecolor bold,white,magenta
+# set titlecolor bold,white,magenta
 # set promptcolor black,yellow
 # set statuscolor bold,white,magenta
 # set errorcolor bold,white,red
