@@ -119,3 +119,4 @@ alias ..='cd ..'
 alias ll='ls -lah'
 alias sys='systemctl'
 alias chezmoi-cd='cd ~/.local/share/chezmoi/'
+alias toto="echo 'toto'"
