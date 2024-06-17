@@ -11,6 +11,7 @@ GREEN=$(tput setaf 2)
 RED=$(tput setaf 1)
 
 echo ""
+echo $CYAN"-------------------------------"$NOCOLOR
 echo $CYAN">>>>> dotfiles management <<<<<"$NOCOLOR
 
 if [ ! "$(command -v chezmoi)" ]; then
