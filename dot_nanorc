@@ -209,7 +209,7 @@ set stateflags
 
 ## Paint the interface elements of nano.  These are examples; there are
 ## no colors by default, except for errorcolor and spotlightcolor.
- set titlecolor bold,white,blue
+ set titlecolor bold,white,cyan
 # set promptcolor lightwhite,grey
 # set statuscolor bold,white,green
 # set errorcolor bold,white,red
@@ -222,7 +222,7 @@ set stateflags
 # set functioncolor green
 
 ## In root's .nanorc you might want to use:
-# set titlecolor bold,white,magenta
+ set titlecolor bold,white,magenta
 # set promptcolor black,yellow
 # set statuscolor bold,white,magenta
 # set errorcolor bold,white,red
