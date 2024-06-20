@@ -105,3 +105,4 @@ alias ll="exa -lgah --icons"
 alias chezmoi-cd="cd ~/.local/share/chezmoi/"
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="~/bin/:$PATH"
