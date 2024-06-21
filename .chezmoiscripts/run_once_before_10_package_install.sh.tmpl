@@ -35,9 +35,9 @@ for package in ${packages_base[@]}; do
   if [ ! $(command -v $package) ]; then
     echo -e $CYAN"--> Installing $package"$NOCOLOR
 {{ if ne .chezmoi.username "root" -}}
-    sudo apt install -y $package
+    sudo apt install -qq -y $package
 {{ else -}}
-    apt install -y ${packages[@]}
+    apt install -qq -y ${packages[@]}
 {{ end -}}
   else
     echo $CYAN"--> $package already installed"$NOCOLOR
