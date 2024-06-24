@@ -15,8 +15,8 @@ package_url={{ .chezmoi_package }}
 echo -e ""
 echo -e $CYAN"###### chezmoi package installalation #####"$NOCOLOR
 
-wget -q -O chezmoi_package $package_url
-sudo apt install ~/chezmoi_package -y
+wget -q -O chezmoi_package.deb $package_url
+sudo apt install ~/chezmoi_package.deb -y
 
 echo -e ""
 {{ end -}}
