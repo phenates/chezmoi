@@ -15,7 +15,7 @@ echo $CYAN"-------------------------------"$NOCOLOR
 echo $CYAN">>>>> dotfiles management <<<<<"$NOCOLOR
 
 if [ ! "$(command -v chezmoi)" ]; then
-  echo $CYAN"--> chezmoi installation, options:"$NOCOLOR
+  echo $CYAN"--> chezmoi binary installation, options:"$NOCOLOR
 
   # Chezmoi install by binary
   echo $GREEN"    Install (default) [1]; Install and Init [2]; Install, Init and Apply [3]; Abord [0]"$NOCOLOR

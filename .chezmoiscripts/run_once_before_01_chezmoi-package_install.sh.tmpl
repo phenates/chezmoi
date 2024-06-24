@@ -14,10 +14,9 @@ package_url={{ .chezmoi_package }}
 # Header
 echo -e ""
 echo -e $CYAN"###### chezmoi package installalation #####"$NOCOLOR
-echo -e ""
 
 wget -q -O chezmoi_package $package_url
-sudo apt install chezmoi_package -y
+sudo apt install ~/chezmoi_package -y
 
 echo -e ""
 {{ end -}}
