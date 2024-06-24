@@ -17,10 +17,9 @@ echo -e $CYAN"###### chezmoi package installalation #####"$NOCOLOR
 
 # install package
 wget -q -O /tmp/chezmoi_package.deb $package_url
-sudo apt install /tmp/chezmoi_package.deb -y
+sudo apt install -qq -y /tmp/chezmoi_package.deb
 
-# remove dowmloaded file and chezmoi binary
-# rm ~/chezmoi_package.deb
+# remove chezmoi binary
 rm -r ~/bin/chezmoi
 
 echo -e ""
