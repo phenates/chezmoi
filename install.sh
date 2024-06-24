@@ -11,13 +11,12 @@ GREEN=$(tput setaf 2)
 RED=$(tput setaf 1)
 
 echo ""
-echo $CYAN"-------------------------------"$NOCOLOR
 echo $CYAN">>>>> dotfiles management <<<<<"$NOCOLOR
 
 if [ ! "$(command -v chezmoi)" ]; then
   echo $CYAN"--> chezmoi binary installation, options:"$NOCOLOR
 
-  # Chezmoi install by binary
+  # Chezmoi binary install
   echo $GREEN"    Install (default) [1]; Install and Init [2]; Install, Init and Apply [3]; Abord [0]"$NOCOLOR
   read -r RES
   case "$RES" in
@@ -46,5 +45,4 @@ if [ ! "$(command -v chezmoi)" ]; then
 else
   echo $CYAN"--> chezmoi seems to be already installed"$NOCOLOR
 fi
-
-echo $GREEN""
+echo ""
