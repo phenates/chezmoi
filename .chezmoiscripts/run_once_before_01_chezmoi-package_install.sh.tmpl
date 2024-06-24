@@ -1,0 +1,21 @@
+#!/bin/bash
+
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian" "ubuntu")) -}}
+set -e # -e: exit on error
+
+# Variables
+NOCOLOR=$(tput sgr0)
+CYAN=$(tput setaf 6)
+GREEN=$(tput setaf 2)
+RED=$(tput setaf 1)
+
+# Header
+echo -e ""
+echo -e $CYAN"###### chezmoi package installalation #####"$NOCOLOR
+echo -e ""
+
+wget -q -O chezmoi_package {{ .data.chezmoi_package }}
+sudo apt install chezmoi_package -y
+
+echo -e ""
+{{ end -}}

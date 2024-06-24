@@ -1,0 +1,52 @@
+#!/bin/bash
+
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian" "ubuntu")) -}}
+set -e # -e: exit on error
+
+# Variables
+NOCOLOR=$(tput sgr0)
+CYAN=$(tput setaf 6)
+GREEN=$(tput setaf 2)
+RED=$(tput setaf 1)
+
+packages_zsh=(
+  zsh
+  fonts-powerline
+  zsh-syntax-highlighting
+)
+
+# Header
+echo -e ""
+echo -e $CYAN"###### ZSH shell, Oh-my-zsh and plungins installalation #####"$NOCOLOR
+echo -e ""
+
+# Zsh shell
+for package in ${packages_zsh[@]}; do
+  if [ ! $(command -v $package) ]; then
+    echo -e $CYAN"--> Installing $package"$NOCOLOR
+{{ if ne .chezmoi.username "root" -}}
+    sudo apt install -y -qq $package
+{{ else -}}
+    apt install -y -qq ${packages_zsh[@]}
+{{ end -}}
+  else
+    echo $CYAN"--> $package already installed"$NOCOLOR
+  fi
+  echo -e ""
+done
+
+# Oh-my-zsh
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+  echo -e $CYAN"--> Install oh-my-zsh"$NOCOLOR
+  sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+else
+  echo -e $CYAN"--> ohmyzsh already installed"$NOCOLOR
+fi
+
+echo -e $CYAN"--> Change default shell to zsh"$NOCOLOR
+chsh -s $(which zsh)
+
+echo -e ""
+echo -e $CYAN"###### Preparation before chezmoi apply finished #####"$NOCOLOR
+echo -e ""
+{{ end -}}
