@@ -16,11 +16,11 @@ echo -e ""
 echo -e $CYAN"###### chezmoi package installalation #####"$NOCOLOR
 
 # install package
-wget -q -O chezmoi_package.deb $package_url
+wget -q -O /tmp/chezmoi_package.deb $package_url
 sudo apt install ~/chezmoi_package.deb -y
 
 # remove dowmloaded file and chezmoi binary
-rm ~/chezmoi_package.deb
+# rm ~/chezmoi_package.deb
 rm -r ~/.local/share/chezmoi
 
 echo -e ""
