@@ -14,7 +14,7 @@ echo -e ""
 echo -e $CYAN"###### chezmoi package installalation #####"$NOCOLOR
 echo -e ""
 
-wget -q -O chezmoi_package {{ .data.chezmoi_package }}
+wget -q -O chezmoi_package {{ .chezmoi_package }}
 sudo apt install chezmoi_package -y
 
 echo -e ""
