@@ -9,12 +9,14 @@ CYAN=$(tput setaf 6)
 GREEN=$(tput setaf 2)
 RED=$(tput setaf 1)
 
+package_url= {{ .chezmoi_package }}
+
 # Header
 echo -e ""
 echo -e $CYAN"###### chezmoi package installalation #####"$NOCOLOR
 echo -e ""
 
-wget -q -O chezmoi_package {{ .chezmoi_package }}
+wget -q -O chezmoi_package $package_url
 sudo apt install chezmoi_package -y
 
 echo -e ""
